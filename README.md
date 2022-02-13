@@ -6,7 +6,8 @@ The following devices will ask for the user to enter readings taken by these dev
 * **Thermometer:** fahrenheit (F)
 * **Weight Scale:** pounds (lbs)
 * **Blood Pressure Monitor:** milimeter mercury (mmHg)
-* **Oximeter:** Pulse in (BPM) & Oxygen Level in (SpO2)
+* **Pulse Oximeter**: beats per minute (BPM)
+* **Oximeter:** Oxygen Level in (SpO2)
 * **Glucometer:** (mmol/L)
 * **Stadiometer:** inches (in)
 
