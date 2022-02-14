@@ -21,7 +21,7 @@ def main():
     device_ID = None
     while True:
         for i in range(len(device_list)):
-            print(i+1, device_list[i])
+            print(i + 1, device_list[i])
         device_ID = int(input("\nSelect the device to take the reading: "))
         if device_ID <= len(device_list):
             break
