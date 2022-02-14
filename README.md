@@ -15,6 +15,12 @@ The following devices will ask for the user to enter readings taken by these dev
 ### Phase 1
 ![Untitled](https://user-images.githubusercontent.com/61075964/153734581-decc5e81-26cc-45ea-bb3c-d0f55204e1f6.png)
 
+## How To Run
+```
+python3 app.py
+```
+When you run it, it will ask you to enter the user ID and choose a device to take the reading. When the device is chossen it displays that device interface for you to enter the reading and then it will insert that to the database.
+
 ## Branches
 
 > **Note:** A branches will be merged to the `main` branch after all the tests for that branch have passed and all functionalities are completed.
