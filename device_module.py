@@ -3,8 +3,6 @@
  and add user entered data to the database in proper format.
 '''
 
-import os
-
 def add_reading(inp):
     user_ID, device_type, reading, time, conn = None, None, None, None, None
     # user_ID
