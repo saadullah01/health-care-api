@@ -51,7 +51,8 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS devices (
 cursor.execute('''CREATE TABLE IF NOT EXISTS measurements (
                 user_ID integer,
                 device_ID intger,
-                value double,
+                reading double,
+                time datetime,
                 FOREIGN KEY (user_ID) REFERENCES users (ID),
                 FOREIGN KEY (device_ID) REFERENCES devices (ID)
             );''')
