@@ -3,23 +3,33 @@ A multi-module health care application to help a health center to manage their d
 
 ## Devices
 The following devices will ask for the user to enter readings taken by these devices in specified units, otherwise it will give an **error** and keep asking them agian and again until the correct values are entered.
-* **Thermometer:** fahrenheit (F)
-* **Weight Scale:** pounds (lbs)
-* **Blood Pressure Monitor:** milimeter mercury (mmHg)
-* **Pulse Oximeter**: beats per minute (BPM)
-* **Oximeter:** Oxygen Level in (SpO2)
-* **Glucometer:** (mmol/L)
-* **Stadiometer:** inches (in)
+
+| ID | Type | Unit |
+| :---: | :---: | :---: |
+| 1 | Thermometer | Fahrenheit (F) |
+| 2 | Weight Scale | Pounds (lbs) |
+| 3 | Blood Pressure Monitor | milimeter mercury (mmHg) |
+| 4 | Pulse Oximeter | beats per minute (BPM) |
+| 5 | Oximeter | Oxygen Level in (SpO2) |
+| 6 | Glucometer | (mmol/L) |
+| 7 | Stadiometer | inches (in) |
+
+## Devices API Interface
+```py
+from device_module import add_reading
+request = {
+  'user_ID': _, # integer
+  'device_ID': _, # integer
+  'reading': _, # double
+  'time': _, # datetime e.g. '%Y-%M-%D %H:%M:%S'
+  'db': _ # sqlite3 connection object to the database in which you want to insert the data
+}
+response = add_reading(request)
+```
 
 ## Tables Schema
 ### Phase 1
 ![Untitled](https://user-images.githubusercontent.com/61075964/153734581-decc5e81-26cc-45ea-bb3c-d0f55204e1f6.png)
-
-## How To Run
-```
-python3 app.py
-```
-When you run it, it will ask you to enter the user ID and choose a device to take the reading. When the device is chossen it displays that device interface for you to enter the reading and then it will insert that to the database.
 
 ## Branches
 
