@@ -26,6 +26,13 @@ request = {
 }
 response = add_reading(request)
 ```
+The `response` format is following:
+```
+response = {
+  success: _, # Boolean
+  message: _ # Message for either success or error
+}
+```
 
 ## Tables Schema
 ### Phase 1
