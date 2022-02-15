@@ -5,8 +5,6 @@
 '''
 
 import sqlite3
-import os
-from urllib import response
 from device_module import add_reading
 
 def main():
