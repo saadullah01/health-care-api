@@ -8,7 +8,6 @@ from flask import Flask, request
 from flask_restful import Resource, Api
 
 from device_module import add_reading, get_reading
-# from device_module import add_reading
 
 app = Flask(__name__)
 api = Api(app)
@@ -26,15 +25,10 @@ class device_api(Resource):
 
 api.add_resource(device_api, '/device_reading')
 
-# def main():
-#     # Creating New Database
-#     response = add_reading({
-#         'user_ID': 3,
-#         'device_ID': 1,
-#         'value': 98,
-#         'time': '2022-02-15 00:00:00'
-#     })
-#     print(response)
+# Main Page
+@app.route('/')
+def index():
+    return "<h1>Welcome to our Health Care App!!</h1>"
 
 if __name__ == '__main__':
     app.run(debug=True)
