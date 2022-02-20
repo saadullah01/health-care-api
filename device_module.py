@@ -38,7 +38,7 @@ def get_reading(inp):
 
 def add_reading(inp):
     connection = sqlite3.connect('health_care_DB.db')
-    user_ID, device_type, reading, time= None, None, None, None
+    user_ID, device_type, reading, time = None, None, None, None
     response = {
         'success': False,
         'message': None
