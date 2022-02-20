@@ -4,10 +4,8 @@
  and will use their functionalities accordingly.
 '''
 
-from urllib import response
 from flask import Flask, request
 from flask_restful import Resource, Api
-from markupsafe import re
 
 from device_module import add_reading, get_reading
 # from device_module import add_reading
