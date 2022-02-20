@@ -3,7 +3,7 @@
  app. It will include all modules that will be created separately
  and will use their functionalities accordingly.
 '''
-import json
+
 from urllib import response
 from flask import Flask, request
 from flask_restful import Resource, Api
