@@ -3,23 +3,40 @@
  app. It will include all modules that will be created separately
  and will use their functionalities accordingly.
 '''
+import json
+from urllib import response
+from flask import Flask, request
+from flask_restful import Resource, Api
+from markupsafe import re
 
-import sqlite3
-from device_module import add_reading
+from device_module import add_reading, get_reading
+# from device_module import add_reading
 
-def main():
-    # Creating New Database
-    connection = sqlite3.connect('health_care_DB.db')
-    
-    response = add_reading({
-        'user_ID': 3,
-        'device_ID': 1,
-        'value': 98,
-        'time': '2022-02-15 00:00:00',
-        'db': connection
-    })
-    print(response)
+app = Flask(__name__)
+api = Api(app)
 
-    connection.close()
+class device_api(Resource):
+    def get(self):
+        data = request.json
+        response = get_reading(data)
+        return response
 
-main()
+    def put(self):
+        data = request.json
+        response = add_reading(data)
+        return response
+
+api.add_resource(device_api, '/device_reading')
+
+# def main():
+#     # Creating New Database
+#     response = add_reading({
+#         'user_ID': 3,
+#         'device_ID': 1,
+#         'value': 98,
+#         'time': '2022-02-15 00:00:00'
+#     })
+#     print(response)
+
+if __name__ == '__main__':
+    app.run(debug=True)

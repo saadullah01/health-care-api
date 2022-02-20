@@ -3,32 +3,26 @@
 '''
 
 import sqlite3
-import os
-from device_module import add_reading
+from device_module import add_reading, get_reading
 
-def test_thermometer():
-    connection = sqlite3.connect('test_DB.db')
-    cursor = connection.cursor()
-
-    # Creating "measurements" Table
-    cursor.execute('''CREATE TABLE IF NOT EXISTS measurements (
-                    user_ID integer,
-                    device_ID intger,
-                    reading double,
-                    time datetime
-                );''')
-    connection.commit()
-
-    _ = add_reading({
+def test_add_reading():
+    response = add_reading({
         'user_ID': 1,
         'device_ID': 2,
         'reading': 98,
-        'time': '2022-02-15 00:00:00',
-        'db': connection
+        'time': '2022-02-15 00:00:00'
     })
+    assert response['success'] == True
 
-    cursor.execute('''SELECT reading FROM measurements WHERE user_ID==1 AND device_ID==2;''')
-    result = cursor.fetchone()
+def test_get_reading():
+    response = get_reading({
+        'user_ID': 1,
+        'device_ID': 2
+    })
+    # Deleting test dummy entry
+    connection = sqlite3.connect('health_care_DB.db')
+    cursor = connection.cursor()
+    cursor.execute('''DELETE FROM measurements WHERE user_ID==1 AND device_ID==2;''')
+    connection.commit()
     connection.close()
-    os.remove('test_DB.db')
-    assert result[0] == 98.0
+    assert response['message'][0] == "Reading = 98.0 Time = 2022-02-15 00:00:00"
