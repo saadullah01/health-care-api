@@ -22,7 +22,6 @@ request = {
   'device_ID': _, # integer
   'reading': _, # double
   'time': _, # datetime e.g. '%Y-%M-%D %H:%M:%S'
-  'db': _ # sqlite3 connection object to the database in which you want to insert the data
 }
 response = add_reading(request)
 ```
