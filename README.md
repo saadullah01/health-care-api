@@ -1,7 +1,8 @@
 # health-care-app
 A multi-module health care application to help a health center to manage their data.
 
-## Devices
+## Devices Module
+### Devices
 The following devices will ask for the user to enter readings taken by these devices in specified units, otherwise it will give an **error** and keep asking them agian and again until the correct values are entered.
 
 | ID | Type | Unit |
@@ -14,28 +15,86 @@ The following devices will ask for the user to enter readings taken by these dev
 | 6 | Glucometer | (mmol/L) |
 | 7 | Stadiometer | inches (in) |
 
-## Devices API Interface
+### User Stories
+For the above mentioned 7 devices a user can:
+* Add data
+* Get data
+
+### Data Module
+**`Request` format to `PUT` data:**
 ```py
-from device_module import add_reading
 request = {
   'user_ID': _, # integer
   'device_ID': _, # integer
   'reading': _, # double
   'time': _, # datetime e.g. '%Y-%M-%D %H:%M:%S'
 }
-response = add_reading(request)
 ```
-The `response` format is following:
+**`Request` format to `GET` data:**
+```py
+request = {
+  'user_ID': _, # integer
+  'device_ID': _, # integer
+}
+```
+**`Response` Format:**
 ```
 response = {
   success: _, # Boolean
-  message: _ # Message for either success or error
+  message: _ # Message includes success/error/data depending on the request
+}
+```
+
+### How to Use
+```terminal
+curl https://health-care-api.herokuapp.com/device-module -X PUT -d '{"user_ID":1,"device_ID":1,"reading":99,"time":"2022-02-15 12:30:00"}' -H 'CONTENT-TYPE: application/json'
+```
+
+## Chat Module
+### User Stories
+A user can:
+* Send text messages to other users
+* Receive text messages from other users
+* Send files (.txt/.wav/.mp4) to other users
+* Receive files (.txt/.wav/.mp4) from other users
+* Get conversation histories
+
+### Message Types
+| ID | Type |
+| :---: | :---: |
+| 1 | text message |
+| 2 | .txt file |
+| 3 | .wav file |
+| 4 | .mp4 file |
+
+### Data Module
+**`Request` format to `PUT` data:**
+```py
+request = {
+  'sender_ID': _, # integer
+  'receiver_ID': _, # integer
+  'conversation_ID': # integer
+  'message_type': _, # integer (ID)
+  'message': _, # text or path to .txt/.wav/.mp4 file depending on message type
+  'time': _, # datetime e.g. '%Y-%M-%D %H:%M:%S'
+}
+```
+**`Request` format to `GET` data:**
+```py
+request = {
+  'conversation_ID': _, # integer
+}
+```
+**`Response` Format:**
+```
+response = {
+  success: _, # Boolean
+  message: _ # Message includes success/error/data depending on the request
 }
 ```
 
 ## Tables Schema
-### Phase 1
-![Untitled](https://user-images.githubusercontent.com/61075964/153734581-decc5e81-26cc-45ea-bb3c-d0f55204e1f6.png)
+![Health Care DB](https://user-images.githubusercontent.com/61075964/158083639-df83334f-8eb0-4783-9dcc-da470e1af235.png)
 
 ## Branches
 
@@ -44,3 +103,4 @@ response = {
 There will be a separate branch for every module, as descibed below (the list will be updated as the project progresses):
 * **db-management-module**
 * **device-module**
+* **chat-module**
