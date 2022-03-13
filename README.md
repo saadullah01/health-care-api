@@ -15,6 +15,11 @@ The following devices will ask for the user to enter readings taken by these dev
 | 6 | Glucometer | (mmol/L) |
 | 7 | Stadiometer | inches (in) |
 
+### User Stories
+For the above mentioned 7 devices a user can:
+* Add data
+* Get data
+
 ### Data Module
 **`Request` format to `PUT` data:**
 ```py
@@ -46,13 +51,21 @@ curl https://health-care-api.herokuapp.com/device-module -X PUT -d '{"user_ID":1
 ```
 
 ## Chat Module
-### Chat Types
+### User Stories
+A user can:
+* Send text messages to other users
+* Receive text messages from other users
+* Send files (.txt/.wav/.mp4) to other users
+* Receive files (.txt/.wav/.mp4) from other users
+* Get conversation histories
 
-| ID | Type | File Format |
-| :---: | :---: | :---: |
-| 1 | Text | .txt |
-| 2 | Audio | .wav |
-| 3 | Video | .mp4 |
+### Message Types
+| ID | Type |
+| :---: | :---: |
+| 1 | text message |
+| 2 | .txt file |
+| 3 | .wav file |
+| 4 | .mp4 file |
 
 ### Data Module
 **`Request` format to `PUT` data:**
@@ -60,16 +73,16 @@ curl https://health-care-api.herokuapp.com/device-module -X PUT -d '{"user_ID":1
 request = {
   'sender_ID': _, # integer
   'receiver_ID': _, # integer
-  'message_type': _, # integer
-  'message': _, # path to .txt/.wav/.mp4 file depending on message type
+  'conversation_ID': # integer
+  'message_type': _, # integer (ID)
+  'message': _, # text or path to .txt/.wav/.mp4 file depending on message type
   'time': _, # datetime e.g. '%Y-%M-%D %H:%M:%S'
 }
 ```
 **`Request` format to `GET` data:**
 ```py
 request = {
-  'sender_ID': _, # integer
-  'receiver_ID': _, # integer
+  'conversation_ID': _, # integer
 }
 ```
 **`Response` Format:**
@@ -81,11 +94,7 @@ response = {
 ```
 
 ## Tables Schema
-### Phase 1
-![Untitled](https://user-images.githubusercontent.com/61075964/153734581-decc5e81-26cc-45ea-bb3c-d0f55204e1f6.png)
-
-### Phase 2
-
+![Health Care DB](https://user-images.githubusercontent.com/61075964/158083639-df83334f-8eb0-4783-9dcc-da470e1af235.png)
 
 ## Branches
 
