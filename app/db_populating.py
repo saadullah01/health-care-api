@@ -1,6 +1,6 @@
 import sqlite3
 
-connection = sqlite3.connect('health_care_DB.db')
+connection = sqlite3.connect('app/health_care_DB.db')
 cursor = connection.cursor()
 
 # Populating "roles" Table
@@ -83,6 +83,22 @@ cursor.execute('''INSERT INTO measurements(user_ID,device_ID,reading,time) VALUE
 cursor.execute('''INSERT INTO measurements(user_ID,device_ID,reading,time) VALUES(8,5,76,'2022-02-15 00:00:00');''')
 cursor.execute('''INSERT INTO measurements(user_ID,device_ID,reading,time) VALUES(8,6,2,'2022-02-15 00:00:00');''')
 cursor.execute('''INSERT INTO measurements(user_ID,device_ID,reading,time) VALUES(8,7,66,'2022-02-15 00:00:00');''')
+
+# Populating "measurements" Table
+cursor.execute('''INSERT INTO conversations(ID,creator_ID,created_at) VALUES(1,1,'2022-02-15 00:00:00');''')
+cursor.execute('''INSERT INTO conversations(ID,creator_ID,created_at) VALUES(2,3,'2022-02-15 00:00:00');''')
+cursor.execute('''INSERT INTO conversations(ID,creator_ID,created_at) VALUES(3,4,'2022-02-15 00:00:00');''')
+cursor.execute('''INSERT INTO conversations(ID,creator_ID,created_at) VALUES(4,5,'2022-02-15 00:00:00');''')
+
+# Populating "measurements" Table
+cursor.execute('''INSERT INTO messages(sender_ID,receiver_ID,conversation_ID,message_type,message,time) VALUES(1,2,1,1,'Hello! I am 1.','2022-02-15 00:00:00');''')
+cursor.execute('''INSERT INTO messages(sender_ID,receiver_ID,conversation_ID,message_type,message,time) VALUES(2,1,1,1,'Hello 1! I am 2.','2022-02-15 00:00:00');''')
+cursor.execute('''INSERT INTO messages(sender_ID,receiver_ID,conversation_ID,message_type,message,time) VALUES(1,3,2,1,'Hello! Can you send me .txt file.','2022-02-15 00:00:00');''')
+cursor.execute('''INSERT INTO messages(sender_ID,receiver_ID,conversation_ID,message_type,message,time) VALUES(3,1,2,2,'/home/files/1.txt','2022-02-15 00:00:00');''')
+cursor.execute('''INSERT INTO messages(sender_ID,receiver_ID,conversation_ID,message_type,message,time) VALUES(1,4,3,1,'Hello! Can you send me .wav file.','2022-02-15 00:00:00');''')
+cursor.execute('''INSERT INTO messages(sender_ID,receiver_ID,conversation_ID,message_type,message,time) VALUES(4,1,3,3,'/home/files/1.wav','2022-02-15 00:00:00');''')
+cursor.execute('''INSERT INTO messages(sender_ID,receiver_ID,conversation_ID,message_type,message,time) VALUES(1,5,4,1,'Hello! Can you send me .mp4 file.','2022-02-15 00:00:00');''')
+cursor.execute('''INSERT INTO messages(sender_ID,receiver_ID,conversation_ID,message_type,message,time) VALUES(5,1,4,4,'/home/files/1.mp4','2022-02-15 00:00:00');''')
 
 connection.commit()
 connection.close()

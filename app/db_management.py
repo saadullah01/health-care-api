@@ -2,10 +2,10 @@ import sqlite3
 import os
 
 # Deleting Database (To create a fresh one)
-os.remove('health_care_DB.db')
+os.remove('app/health_care_DB.db')
 
 # Creating New Database
-connection = sqlite3.connect('health_care_DB.db')
+connection = sqlite3.connect('app/health_care_DB.db')
 cursor = connection.cursor()
 
 # Creating "roles" Table
@@ -55,6 +55,27 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS measurements (
                 time datetime,
                 FOREIGN KEY (user_ID) REFERENCES users (ID),
                 FOREIGN KEY (device_ID) REFERENCES devices (ID)
+            );''')
+
+# Creating "conversations" Table
+cursor.execute('''CREATE TABLE IF NOT EXISTS conversations (
+                ID integer PRIMARY KEY,
+                creator_ID intger,
+                created_at datetime,
+                FOREIGN KEY (creator_ID) REFERENCES users (ID)
+            );''')
+
+# Creating "messages" Table
+cursor.execute('''CREATE TABLE IF NOT EXISTS messages (
+                sender_ID integer,
+                receiver_ID intger,
+                conversation_ID integer,
+                message_type integer,
+                message text,
+                time datetime,
+                FOREIGN KEY (sender_ID) REFERENCES users (ID),
+                FOREIGN KEY (receiver_ID) REFERENCES users (ID),
+                FOREIGN KEY (conversation_ID) REFERENCES conversations (ID)
             );''')
 
 connection.commit()
