@@ -8,7 +8,7 @@ from flask import Flask, request
 from flask_restful import Resource, Api
 
 from device_module import add_reading, get_reading
-from chat_module import chat_api
+from chat_module import chat_api as c
 
 app = Flask(__name__)
 api = Api(app)
@@ -25,17 +25,14 @@ class device_api(Resource):
         return response
 
 class chat_api(Resource):
-    def __init__(self):
-        self.c = chat_api()
-
     def get(self):
         data = request.json
-        response = self.c.get_reading(data)
+        response = c.get_reading(data)
         return response
 
     def put(self):
         data = request.json
-        response = self.c.add_reading(data)
+        response = c.add_reading(data)
         return response
 
 api.add_resource(device_api, '/device')

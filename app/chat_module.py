@@ -5,11 +5,8 @@
 import sqlite3
 
 class chat_api():
-    def __init__(self):
-       self.db = 'app/health_care_DB.db'
-
-    def get_reading(self, inp):
-        connection = sqlite3.connect(self.db)
+    def get_reading(inp):
+        connection = sqlite3.connect('app/health_care_DB.db')
         conversation_ID = None
         response = {
             'success': False,
@@ -34,8 +31,8 @@ class chat_api():
         
         return response
 
-    def add_reading(self, inp):
-        connection = sqlite3.connect(self.db)
+    def add_reading(inp):
+        connection = sqlite3.connect('app/health_care_DB.db')
         sender_ID, receiver_ID, conversation_ID, message_type, message, time = None, None, None, None, None, None
         response = {
             'success': False,
