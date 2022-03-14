@@ -79,7 +79,7 @@ class chat_module():
             return response
 
         cursor = connection.cursor()
-        cursor.execute('''INSERT INTO messages(sender_ID,receiver_ID,conversation_ID,message_type,message,time) VALUES(?,?,?,?,?,?);''', (sender_ID,receiver_ID,conversation_ID,message_type,message,time))
+        cursor.execute('''INSERT INTO messages(sender_ID,receiver_ID,conversation_ID,message_type,message,time) VALUES(?,?,?,?,?,?);''', (sender_ID, receiver_ID, conversation_ID, message_type, message, time))
         connection.commit()
         connection.close()
 
