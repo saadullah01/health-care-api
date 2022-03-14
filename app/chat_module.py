@@ -4,7 +4,7 @@
 '''
 import sqlite3
 
-class chat_module():
+class chat_api():
     def __init__(self):
        self.db = 'app/health_care_DB.db'
 

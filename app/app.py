@@ -8,7 +8,7 @@ from flask import Flask, request
 from flask_restful import Resource, Api
 
 from device_module import add_reading, get_reading
-import chat_module as c
+from chat_module import chat_api as c
 
 app = Flask(__name__)
 api = Api(app)
