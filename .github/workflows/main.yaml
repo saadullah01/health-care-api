@@ -30,7 +30,7 @@ jobs:
           # 2) unused but imported module (F401)
           # 3) unused local variables (F841)
           # 4) incorrect uses of white spaces (E2)
-          flake8 . --count --select=E999,F401,F841,E2 --show-source --statistics
+          flake8 app --count --select=E999,F401,F841,E2 --show-source --statistics
       
       - name: Test with pytest
         run: |
