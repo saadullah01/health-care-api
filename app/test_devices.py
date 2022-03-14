@@ -3,10 +3,10 @@
 '''
 
 import sqlite3
-from device_module import add_reading, get_reading
+from device_module import device_api as d
 
 def test_add_reading():
-    response = add_reading({
+    response = d.add_reading({
         'user_ID': 1,
         'device_ID': 2,
         'reading': 98,
@@ -15,7 +15,7 @@ def test_add_reading():
     assert response['success'] == True
 
 def test_get_reading():
-    response = get_reading({
+    response = d.get_reading({
         'user_ID': 1,
         'device_ID': 2
     })
