@@ -8,9 +8,22 @@ A multi-module health care application to help a health center to manage their d
 * Patients
 * Administrators
 * Developers
->> * Application Developers
->> * Device Integrators
->> * Machine Learning Scientists
+> * Application Developers
+> * Device Integrators
+> * Machine Learning Scientists
+
+
+## Tables Schema
+![Health Care DB](https://user-images.githubusercontent.com/61075964/158083639-df83334f-8eb0-4783-9dcc-da470e1af235.png)
+
+## Branches
+
+> **Note:** A branches will be merged to the `main` branch after all the tests for that branch have passed and all functionalities are completed.
+
+There will be a separate branch for every module, as descibed below (the list will be updated as the project progresses):
+* **db-management-module**
+* **device-module**
+* **chat-module**
 
 ## Devices Module
 ### Devices
@@ -118,15 +131,3 @@ response = requests.put(URL + 'chat', put_request)
 ```
 response = requests.get(URL + 'chat', get_request)
 ```
-
-## Tables Schema
-![Health Care DB](https://user-images.githubusercontent.com/61075964/158083639-df83334f-8eb0-4783-9dcc-da470e1af235.png)
-
-## Branches
-
-> **Note:** A branches will be merged to the `main` branch after all the tests for that branch have passed and all functionalities are completed.
-
-There will be a separate branch for every module, as descibed below (the list will be updated as the project progresses):
-* **db-management-module**
-* **device-module**
-* **chat-module**
