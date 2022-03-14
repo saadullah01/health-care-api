@@ -1,6 +1,17 @@
 # health-care-app
 A multi-module health care application to help a health center to manage their data.
 
+**Deployed Link:** https://health-monitoring-api.herokuapp.com/
+
+## Users
+* Medical Professionals (Nurses and Doctors)
+* Patients
+* Administrators
+* Developers
+>> * Application Developers
+>> * Device Integrators
+>> * Machine Learning Scientists
+
 ## Devices Module
 ### Devices
 The following devices will ask for the user to enter readings taken by these devices in specified units, otherwise it will give an **error** and keep asking them agian and again until the correct values are entered.
@@ -23,7 +34,7 @@ For the above mentioned 7 devices a user can:
 ### Data Module
 **`Request` format to `PUT` data:**
 ```py
-request = {
+put_request = {
   'user_ID': _, # integer
   'device_ID': _, # integer
   'reading': _, # double
@@ -32,7 +43,7 @@ request = {
 ```
 **`Request` format to `GET` data:**
 ```py
-request = {
+get_request = {
   'user_ID': _, # integer
   'device_ID': _, # integer
 }
@@ -46,8 +57,13 @@ response = {
 ```
 
 ### How to Use
-```terminal
-curl https://health-care-api.herokuapp.com/device-module -X PUT -d '{"user_ID":1,"device_ID":1,"reading":99,"time":"2022-02-15 12:30:00"}' -H 'CONTENT-TYPE: application/json'
+**PUT**
+```
+response = requests.put(URL + 'device', put_request)
+```
+**GET**
+```
+response = requests.get(URL + 'device', get_request)
 ```
 
 ## Chat Module
@@ -70,7 +86,7 @@ A user can:
 ### Data Module
 **`Request` format to `PUT` data:**
 ```py
-request = {
+put_request = {
   'sender_ID': _, # integer
   'receiver_ID': _, # integer
   'conversation_ID': # integer
@@ -81,7 +97,7 @@ request = {
 ```
 **`Request` format to `GET` data:**
 ```py
-request = {
+get_request = {
   'conversation_ID': _, # integer
 }
 ```
@@ -91,6 +107,16 @@ response = {
   success: _, # Boolean
   message: _ # Message includes success/error/data depending on the request
 }
+```
+
+### How to Use
+**PUT**
+```
+response = requests.put(URL + 'chat', put_request)
+```
+**GET**
+```
+response = requests.get(URL + 'chat', get_request)
 ```
 
 ## Tables Schema
