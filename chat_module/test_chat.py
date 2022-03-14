@@ -3,7 +3,7 @@
 '''
 
 import sqlite3
-from chat_module.chat import chat_api as c
+from chat import chat_api as c
 
 def test_add_reading():
     response = c.add_reading({

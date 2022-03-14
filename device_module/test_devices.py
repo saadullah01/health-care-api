@@ -3,7 +3,7 @@
 '''
 
 import sqlite3
-from device_module.devices import device_api as d
+from devices import device_api as d
 
 def test_add_reading():
     response = d.add_reading({
