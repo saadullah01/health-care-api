@@ -26,4 +26,4 @@ def test_get_reading():
     cursor.execute('''DELETE FROM messages WHERE conversation_ID==1 AND message=='Nice to meet you!';''')
     connection.commit()
     connection.close()
-    assert response['success'] = True
+    assert response['success'] == True
