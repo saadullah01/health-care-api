@@ -1,8 +1,6 @@
 # health-care-app
 A multi-module health care application to help a health center to manage their data.
 
-**Deployed Link:** https://health-monitoring-api.herokuapp.com/
-
 ## Users
 * Medical Professionals (Nurses and Doctors)
 * Patients
