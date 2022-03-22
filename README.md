@@ -149,5 +149,5 @@ python3 s2t.py <arguments>
 
 **Example**
 ```
-python3 speech2text/s2t.py -c 8 -t 2 -n 50
+python3 speech2text/s2t.py -c <number_of_cores> -t <threads_per_core> -n <number_of_API_requests>
 ```
