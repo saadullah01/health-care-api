@@ -129,3 +129,26 @@ response = requests.put(URL + 'chat', put_request)
 ```
 response = requests.get(URL + 'chat', get_request)
 ```
+
+## Speech-to-Text Module
+For this module, first run the following command in your terminal (if you are using Linux):
+```
+lscpu | egrep 'Model name|Socket|Thread|NUMA|CPU\(s\)'
+```
+It will tell you the `number of CPU cores` you have and the `number of threads` you can run per core. By this you can get the number of threads you can run at a time.
+> **For example:** my system has 8 cores and one core can handle 2 threads at a time so the number of API calls it can handle at a time, considering one API call per thread, is 16.
+### How to Use
+```
+python3 s2t.py <arguments>
+```
+**arguments**
+* -h / --help
+* -c / --cores <number_of_cores>
+* -t / --threads <threads_per_core>
+* -n / --num <number_of_API_requests>
+
+**Example**
+```
+python3 speech2text/s2t.py -c 8 -t 2 -n 50
+```
+The tracking interface for this program will display the working of threads when in progress and done.
