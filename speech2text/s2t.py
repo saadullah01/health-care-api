@@ -36,12 +36,12 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv, "h:c:t:n:", ["help", "cores", "threads", "num"])
     except:
-        print("s2t.py -c <number_of_cores> -t <threads_per_core> -n <number_of_API_requests>")
+        print("python3 s2t.py -c <number_of_cores> -t <threads_per_core> -n <number_of_API_requests>")
         sys.exit(1)
 
     for opt, arg in opts:
         if opt in ('-h', '--help'):
-            print("s2t.py -c <number_of_cores> -t <threads_per_core> -n <number_of_API_requests>")
+            print("python3 s2t.py -c <number_of_cores> -t <threads_per_core> -n <number_of_API_requests>")
             sys.exit(2)
         elif opt in ('-c', '--cores'):
             num_of_cores = int(arg)
