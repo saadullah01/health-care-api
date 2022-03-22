@@ -1,11 +1,11 @@
 import getopt
-import Queue
+import queue
 import sys
 import threading
 import time
 
 # api call queue & lock
-task_q = Queue.Queue()
+task_q = queue.Queue()
 lock_q = threading.Lock()
 
 # Flag to end threads
