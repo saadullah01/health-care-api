@@ -142,12 +142,13 @@ It will tell you the `number of CPU cores` you have and the `number of threads` 
 python3 s2t.py <arguments>
 ```
 **arguments**
-* -h/--help
-* -c/--cores <number_of_cores>
-* -t/--threads <threads_per_core>
-* -n/--num <number_of_API_requests>
+* -h / --help
+* -c / --cores <number_of_cores>
+* -t / --threads <threads_per_core>
+* -n / --num <number_of_API_requests>
 
 **Example**
 ```
-python3 speech2text/s2t.py -c <number_of_cores> -t <threads_per_core> -n <number_of_API_requests>
+python3 speech2text/s2t.py -c 8 -t 2 -n 50
 ```
+The tracking interface for this program will display the working of threads when in progress and done.
