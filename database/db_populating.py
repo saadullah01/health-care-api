@@ -84,13 +84,13 @@ cursor.execute('''INSERT INTO measurements(user_ID,device_ID,reading,time) VALUE
 cursor.execute('''INSERT INTO measurements(user_ID,device_ID,reading,time) VALUES(8,6,2,'2022-02-15 00:00:00');''')
 cursor.execute('''INSERT INTO measurements(user_ID,device_ID,reading,time) VALUES(8,7,66,'2022-02-15 00:00:00');''')
 
-# Populating "measurements" Table
+# Populating "conversations" Table
 cursor.execute('''INSERT INTO conversations(ID,creator_ID,created_at) VALUES(1,1,'2022-02-15 00:00:00');''')
 cursor.execute('''INSERT INTO conversations(ID,creator_ID,created_at) VALUES(2,3,'2022-02-15 00:00:00');''')
 cursor.execute('''INSERT INTO conversations(ID,creator_ID,created_at) VALUES(3,4,'2022-02-15 00:00:00');''')
 cursor.execute('''INSERT INTO conversations(ID,creator_ID,created_at) VALUES(4,5,'2022-02-15 00:00:00');''')
 
-# Populating "measurements" Table
+# Populating "messages" Table
 cursor.execute('''INSERT INTO messages(sender_ID,receiver_ID,conversation_ID,message_type,message,time) VALUES(1,2,1,1,'Hello! I am 1.','2022-02-15 00:00:00');''')
 cursor.execute('''INSERT INTO messages(sender_ID,receiver_ID,conversation_ID,message_type,message,time) VALUES(2,1,1,1,'Hello 1! I am 2.','2022-02-15 00:00:00');''')
 cursor.execute('''INSERT INTO messages(sender_ID,receiver_ID,conversation_ID,message_type,message,time) VALUES(1,3,2,1,'Hello! Can you send me .txt file.','2022-02-15 00:00:00');''')
