@@ -34,7 +34,7 @@ def main(argv):
     num_API_requests = None
 
     try:
-        opts, args = getopt.getopt(argv, "h:c:t:n:", ["help", "cores", "threads", "num"])
+        opts, _ = getopt.getopt(argv, "h:c:t:n:", ["help", "cores", "threads", "num"])
     except:
         print("python3 s2t.py -c <number_of_cores> -t <threads_per_core> -n <number_of_API_requests>")
         sys.exit(1)
