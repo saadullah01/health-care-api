@@ -7,6 +7,7 @@ from devices import device_api as d
 
 def test_add_reading():
     response = d.add_reading({
+        'request': 'POST',
         'user_ID': 1,
         'device_ID': 2,
         'reading': 98,
@@ -16,6 +17,7 @@ def test_add_reading():
 
 def test_get_reading():
     response = d.get_reading({
+        'request': 'GET',
         'user_ID': 1,
         'device_ID': 2
     })

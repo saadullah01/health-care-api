@@ -7,6 +7,7 @@ from chat import chat_api as c
 
 def test_add_reading():
     response = c.add_reading({
+        'request': 'POST',
         'sender_ID': 1,
         'receiver_ID': 2,
         'conversation_ID': 1,
@@ -18,6 +19,7 @@ def test_add_reading():
 
 def test_get_reading():
     response = c.get_reading({
+        'request': 'GET',
         'conversation_ID': 1
     })
     # Deleting test dummy entry

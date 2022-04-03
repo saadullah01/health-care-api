@@ -5,39 +5,53 @@
 '''
 
 from flask import Flask, request
-from flask_restful import Resource, Api
 
 from device_module.devices import device_api as d
 from chat_module.chat import chat_api as c
 
 app = Flask(__name__)
-api = Api(app)
 
-class device_api(Resource):
-    def get(self):
-        data = request.json
-        response = d.get_reading(data)
-        return response
+######################################################################################
+################################## DEVICE API ########################################
+######################################################################################
+@app.route('/device', methods=['GET', 'POST'])
+def device_handler():
+    '''
+        Handles the following 3 kinds of requests for device API:
 
-    def put(self):
-        data = request.json
-        response = d.add_reading(data)
-        return response
+        1. GET a specific patient's data for a specific device
+        2. POST a specific patient's data for a specific device
+        3. DELETE a specific patient's data for a specific device (TBD)
+    '''
+    request_type = {
+        'GET': d.get_reading,
+        'POST': d.add_reading
+    }
+    data = request.json
+    response = request_type[data['request']](data)
+    return response
 
-class chat_api(Resource):
-    def get(self):
-        data = request.json
-        response = c.get_reading(data)
-        return response
+######################################################################################
+################################## CHAT API ########################################
+######################################################################################
+@app.route('/chat', methods=['GET', 'POST'])
+def chat_handler():
+    '''
+        Handles the following 3 kinds of requests for chat API:
 
-    def put(self):
-        data = request.json
-        response = c.add_reading(data)
-        return response
-
-# Routes
-api.add_resource(device_api, '/device')
-api.add_resource(chat_api, '/chat')
+        1. GET a specific coversation for specific users
+        2. POST a specific message to specific conversation
+        3. POST to start a new conversation (TBD)
+        4. DELETE a specific message from a coversation (TBD)
+        5. DELETE a specific conversation (TBD)
+    '''
+    request_type = {
+        'GET': c.get_reading,
+        'POST': c.add_reading
+    }
+    data = request.json
+    response = request_type[data['request']](data)
+    return response
 
 # Main Page
 @app.route('/')
