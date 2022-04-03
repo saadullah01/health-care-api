@@ -1,4 +1,4 @@
-# health-care-app
+# health-care-api
 A multi-module health care application to help a health center to manage their data.
 
 ## Users
