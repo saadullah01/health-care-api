@@ -6,7 +6,7 @@ import sqlite3
 from chat import chat_api as c
 
 def test_add_reading():
-    response = c.add_reading({
+    response = c.put({
         'request': 'POST',
         'sender_ID': 1,
         'receiver_ID': 2,
@@ -18,7 +18,7 @@ def test_add_reading():
     assert response['success'] == True
 
 def test_get_reading():
-    response = c.get_reading({
+    response = c.get({
         'request': 'GET',
         'conversation_ID': 1
     })

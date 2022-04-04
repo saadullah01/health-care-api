@@ -3,8 +3,6 @@
 '''
 import sqlite3
 
-from numpy import delete
-
 class user_api():
     def get(inp):
         connection = sqlite3.connect('database/health_care_DB.db')
