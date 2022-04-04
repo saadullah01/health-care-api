@@ -5,7 +5,7 @@
 import sqlite3
 
 class chat_api():
-    def get_reading(inp):
+    def get(inp):
         connection = sqlite3.connect('database/health_care_DB.db')
         conversation_ID = None
         response = {
@@ -31,7 +31,7 @@ class chat_api():
         
         return response
 
-    def add_reading(inp):
+    def put(inp):
         connection = sqlite3.connect('database/health_care_DB.db')
         sender_ID, receiver_ID, conversation_ID, message_type, message, time = None, None, None, None, None, None
         response = {
@@ -83,3 +83,12 @@ class chat_api():
         response['success'] = True
         response['message'] = "Successfull!"
         return response
+
+    def put_c(inp):
+        pass
+
+    def delete_m(inp):
+        pass
+
+    def delete_c(inp):
+        pass
