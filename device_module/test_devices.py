@@ -6,7 +6,7 @@ import sqlite3
 from devices import device_api as d
 
 def test_add_reading():
-    response = d.add_reading({
+    response = d.put({
         'request': 'POST',
         'user_ID': 1,
         'device_ID': 2,
@@ -16,7 +16,7 @@ def test_add_reading():
     assert response['success'] == True
 
 def test_get_reading():
-    response = d.get_reading({
+    response = d.get({
         'request': 'GET',
         'user_ID': 1,
         'device_ID': 2

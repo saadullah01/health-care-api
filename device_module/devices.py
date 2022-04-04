@@ -5,7 +5,7 @@
 import sqlite3
 
 class device_api():
-    def get_reading(inp):
+    def get(inp):
         connection = sqlite3.connect('database/health_care_DB.db')
         user_ID, device_type = None, None
         response = {
@@ -37,7 +37,7 @@ class device_api():
         
         return response
 
-    def add_reading(inp):
+    def put(inp):
         connection = sqlite3.connect('database/health_care_DB.db')
         user_ID, device_type, reading, time = None, None, None, None
         response = {
@@ -77,3 +77,6 @@ class device_api():
         response['success'] = True
         response['message'] = "Successfull!"
         return response
+
+    def delete(inp):
+        pass

@@ -10,19 +10,20 @@ cursor = connection.cursor()
 
 # Creating "roles" Table
 cursor.execute('''CREATE TABLE IF NOT EXISTS roles (
-                ID integer PRIMARY_KEY, 
+                ID integer PRIMARY KEY AUTOINCREMENT,
                 name text
             );''')
 
 # Creating "users" Table
 cursor.execute('''CREATE TABLE IF NOT EXISTS users (
-                ID integer PRIMARY_KEY, 
+                ID integer PRIMARY KEY AUTOINCREMENT, 
                 first_name text,
                 last_name text,
                 gender text,
-                contact_no integer,
+                contact_no text,
                 role_ID integer,
                 dob datetime,
+                email text,
                 address text,
                 billing text,
                 allergies text,
@@ -36,7 +37,7 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS users (
 
 # Creating "devices" Table
 cursor.execute('''CREATE TABLE IF NOT EXISTS devices (
-                ID integer PRIMARY_KEY, 
+                ID integer PRIMARY KEY AUTOINCREMENT, 
                 type text,
                 unit text,
                 date_of_purchase datetime,
@@ -59,7 +60,7 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS measurements (
 
 # Creating "conversations" Table
 cursor.execute('''CREATE TABLE IF NOT EXISTS conversations (
-                ID integer PRIMARY KEY,
+                ID integer PRIMARY KEY AUTOINCREMENT,
                 creator_ID intger,
                 created_at datetime,
                 FOREIGN KEY (creator_ID) REFERENCES users (ID)
