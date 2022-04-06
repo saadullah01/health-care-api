@@ -1,6 +1,7 @@
 '''
  This file contains functions for all of the user interface.
 '''
+from asyncore import read
 import sqlite3
 
 class user_api():
@@ -26,24 +27,25 @@ class user_api():
         connection.commit()
         connection.close()
 
-        response['success'] = True
-        response['message'] = {
-            'first_name': readings[1],
-            'last_name': readings[2],
-            'gender': readings[3],
-            'contact_no': readings[4],
-            'role_ID': readings[5],
-            'dob': readings[6],
-            'email': readings[7],
-            'address': readings[8],
-            'billing': readings[9],
-            'allergies': readings[10],
-            'medical_ID': readings[11],
-            'family': readings[12],
-            'medical_history': readings[13],
-            'medical_condition': readings[14],
-            'emergency_contact': readings[15]
-        }
+        if readings:
+            response['success'] = True
+            response['message'] = {
+                'first_name': readings[1],
+                'last_name': readings[2],
+                'gender': readings[3],
+                'contact_no': readings[4],
+                'role_ID': readings[5],
+                'dob': readings[6],
+                'email': readings[7],
+                'address': readings[8],
+                'billing': readings[9],
+                'allergies': readings[10],
+                'medical_ID': readings[11],
+                'family': readings[12],
+                'medical_history': readings[13],
+                'medical_condition': readings[14],
+                'emergency_contact': readings[15]
+            }
         return response
 
     def put(inp):

@@ -4,7 +4,7 @@ connection = sqlite3.connect('database/health_care_DB.db')
 cursor = connection.cursor()
 
 # Populating "roles" Table
-roles = ['admin', 'doctor', 'nurse', 'patient', 'AI analysts', 'application developers', 'device integrators']
+roles = ['admin', 'medical professional', 'patient', 'AI analyst', 'application developer', 'device integrator']
 for r in roles:
     cursor.execute("INSERT INTO roles(Name) VALUES('" + r + "');")
 
