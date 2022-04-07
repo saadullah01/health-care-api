@@ -35,6 +35,12 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS users (
                 FOREIGN KEY (role_ID) REFERENCES roles (ID)
             );''')
 
+# Creating "treatments" Table
+cursor.execute('''CREATE TABLE IF NOT EXISTS treatments (
+                mp_ID integer,
+                p_ID integer
+            );''')
+
 # Creating "devices" Table
 cursor.execute('''CREATE TABLE IF NOT EXISTS devices (
                 ID integer PRIMARY KEY AUTOINCREMENT, 

@@ -4,20 +4,32 @@ connection = sqlite3.connect('database/health_care_DB.db')
 cursor = connection.cursor()
 
 # Populating "roles" Table
-roles = ['admin', 'medical professional', 'patient', 'AI analyst', 'application developer', 'device integrator']
+roles = ['admin', 'doctor', 'nurse', 'patient', 'AI analyst', 'application developer', 'device integrator']
 for r in roles:
     cursor.execute("INSERT INTO roles(Name) VALUES('" + r + "');")
 
 # Populating "users" Table
 users_sql = "INSERT INTO users(first_name,last_name,gender,contact_no,role_ID,dob,email,address,billing,allergies,medical_ID,family,medical_history,medical_condition,emergency_contact) "
-cursor.execute(users_sql + '''VALUES('Saad','Ullah','male',8573212741,1,'1999-08-09 00:00:00','saadu@bu.edu','1711 Comm Ave','same','none','XXXXXXX','none','none','none','none');''')
-cursor.execute(users_sql + '''VALUES('Osama','Prof','male',000000,2,'1999-08-09 00:00:00','osama@bu.edu','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
-cursor.execute(users_sql + '''VALUES('Zaid','Tahir','male',000000,4,'1999-08-09 00:00:00','zaid@bu.edu','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
-cursor.execute(users_sql + '''VALUES('Noor','Alina','female',000000,4,'1999-08-09 00:00:00','noor@gmail.com','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
-cursor.execute(users_sql + '''VALUES('Jonah','Sameul','male',000000,3,'1999-08-09 00:00:00','jss12@bu.edu','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
-cursor.execute(users_sql + '''VALUES('Mary','Cris','female',000000,4,'1999-08-09 00:00:00','mary@gmail.com','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
-cursor.execute(users_sql + '''VALUES('Anni','India','male',000000,4,'1999-08-09 00:00:00','anni@gmail.com','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
-cursor.execute(users_sql + '''VALUES('Cristina','Orla','female',000000,4,'1999-08-09 00:00:00','c@gmail.com','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
+cursor.execute(users_sql + '''VALUES('Saad','Ullah','male','8573212741',1,'1999-08-09 00:00:00','saadu@bu.edu','1711 Comm Ave','same','none','XXXXXXX','none','none','none','none');''')
+cursor.execute(users_sql + '''VALUES('Osama','Prof','male','000000',2,'1999-08-09 00:00:00','osama@bu.edu','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
+cursor.execute(users_sql + '''VALUES('Zaid','Tahir','male','000000',3,'1999-08-09 00:00:00','zaid@bu.edu','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
+cursor.execute(users_sql + '''VALUES('Noor','Alina','female','000000',4,'1999-08-09 00:00:00','noor@gmail.com','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
+cursor.execute(users_sql + '''VALUES('Jonah','Sameul','male','000000',4,'1999-08-09 00:00:00','jss12@bu.edu','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
+cursor.execute(users_sql + '''VALUES('Mary','Cris','female','000000',3,'1999-08-09 00:00:00','mary@gmail.com','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
+cursor.execute(users_sql + '''VALUES('Anni','India','male','000000',4,'1999-08-09 00:00:00','anni@gmail.com','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
+cursor.execute(users_sql + '''VALUES('Cristina','Orla','female','000000',4,'1999-08-09 00:00:00','c@gmail.com','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
+
+# Populating "treatments" Table
+treatments_sql = "INSERT INTO treatments(mp_ID,p_ID) "
+cursor.execute(treatments_sql + '''VALUES(2,4);''')
+cursor.execute(treatments_sql + '''VALUES(2,5);''')
+cursor.execute(treatments_sql + '''VALUES(2,7);''')
+cursor.execute(treatments_sql + '''VALUES(2,8);''')
+cursor.execute(treatments_sql + '''VALUES(3,4);''')
+cursor.execute(treatments_sql + '''VALUES(3,5);''')
+cursor.execute(treatments_sql + '''VALUES(3,7);''')
+cursor.execute(treatments_sql + '''VALUES(6,7);''')
+cursor.execute(treatments_sql + '''VALUES(6,8);''')
 
 # Populating "devices" Table
 devices_sql = "INSERT INTO devices(type,unit,date_of_purchase,MAC_address,user_ID,fw_version,sw_version) "
