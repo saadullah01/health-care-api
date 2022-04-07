@@ -10,8 +10,8 @@ for r in roles:
 
 # Populating "users" Table
 users_sql = "INSERT INTO users(first_name,last_name,gender,contact_no,role_ID,dob,email,address,billing,allergies,medical_ID,family,medical_history,medical_condition,emergency_contact) "
-cursor.execute(users_sql + '''VALUES('Saad','Ullah','male','8573212741',1,'1999-08-09 00:00:00','saadu@bu.edu','1711 Comm Ave','same','none','XXXXXXX','none','none','none','none');''')
-cursor.execute(users_sql + '''VALUES('Osama','Prof','male','000000',2,'1999-08-09 00:00:00','osama@bu.edu','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
+cursor.execute(users_sql + '''VALUES('Osama','Prof','male','000000',1,'1999-08-09 00:00:00','osama@bu.edu','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
+cursor.execute(users_sql + '''VALUES('Saad','Ullah','male','8573212741',2,'1999-08-09 00:00:00','saadu@bu.edu','1711 Comm Ave','same','none','XXXXXXX','none','none','none','none');''')
 cursor.execute(users_sql + '''VALUES('Zaid','Tahir','male','000000',3,'1999-08-09 00:00:00','zaid@bu.edu','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
 cursor.execute(users_sql + '''VALUES('Noor','Alina','female','000000',4,'1999-08-09 00:00:00','noor@gmail.com','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
 cursor.execute(users_sql + '''VALUES('Jonah','Sameul','male','000000',4,'1999-08-09 00:00:00','jss12@bu.edu','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
