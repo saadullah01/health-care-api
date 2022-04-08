@@ -228,24 +228,50 @@ class user_api():
         return response
 
     def get_mp(inp):
-        pass
+        connection = sqlite3.connect('database/health_care_DB.db')
+        p_ID = None
 
-# inp = {
-#     'first_name': 'Molly',
-#     'last_name': 'Hicks',
-#     'gender': 'bisexual',
-#     'contact_no': '0000000000',
-#     'role_ID': 3,
-#     'dob': '2001-03-06 00:00:00',
-#     'email': 'molly@gmail.com',
-#     'address': '66 Beach Point Place',
-#     'billing': 'same',
-#     'allergies': 'none',
-#     'medical_ID': 'XXXXXXXXX',
-#     'family': 'none',
-#     'medical_history': 'none',
-#     'medical_condition': 'none',
-#     'emergency_contact': 'XXXXXXXXXXX'
-# }
+        response = {
+            'success': False,
+            'message': None
+        }
 
-# print(user_api.put(inp))
+        # p_ID
+        try:
+            p_ID = int(inp['p_ID'])
+        except:
+            response['message'] = "Error! Invalid p_ID format"
+            return response
+        
+        cursor = connection.cursor()
+        cursor.execute('''SELECT * FROM treatments WHERE p_ID==?;''', (p_ID,))
+        readings = cursor.fetchall()
+
+        response['success'] = True
+        response['message'] = []
+        for r in readings:
+            cursor.execute('''SELECT * FROM users WHERE ID==?;''', (r[0],))
+            user_data = cursor.fetchone()
+
+            response['message'].append({
+                'user_ID': user_data[0],
+                'first_name': user_data[1],
+                'last_name': user_data[2],
+                'gender': user_data[3],
+                'contact_no': user_data[4],
+                'role_ID': user_data[5],
+                'dob': user_data[6],
+                'email': user_data[7],
+                'address': user_data[8],
+                'billing': user_data[9],
+                'allergies': user_data[10],
+                'medical_ID': user_data[11],
+                'family': user_data[12],
+                'medical_history': user_data[13],
+                'medical_condition': user_data[14],
+                'emergency_contact': user_data[15]
+            })
+
+        connection.commit()
+        connection.close()
+        return response
