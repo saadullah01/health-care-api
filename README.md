@@ -218,7 +218,7 @@ response = {
   message: _ # success message OR error message
 }
 ```
-**`GET PATIENTS` data:**
+**`GET PATIENTS` data for a medical professional:**
 ```py
 request = {
     'request': 'GET_P',
@@ -230,7 +230,7 @@ response = {
   message: _ # list of json objects of user data OR error message
 }
 ```
-**`GET MEDICAL PROFESSIONALS` data:**
+**`GET MEDICAL PROFESSIONALS` data for a patient:**
 ```py
 request = {
     'request': 'GET_MP',
