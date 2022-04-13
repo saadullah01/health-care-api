@@ -1,5 +1,5 @@
-# health-care-api
-A multi-module health care application to help a health center to manage their data.
+# Health Data Managing API
+A multi-module health care application data management API to help a health center to manage their data.
 
 ## Users
 * Medical Professionals (Nurses and Doctors)
