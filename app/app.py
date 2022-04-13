@@ -73,14 +73,14 @@ def user_handler():
         Handles the following 5 kinds of requests for chat API:
 
         1. GET user data by 'email'
-        2. PUT user to the database (check for existence of same user before through 'email')
+        2. ADD user to the database (check for existence of same user before through 'email')
         3. DELETE user by 'email'
         4. GET_P (patients) for a user (i.e. medical professional)
         5. GET_MP (medical professionals) for a user (i.e. patient)
     '''
     request_type = {
         'GET': u.get,
-        'ADD': u.put,
+        'ADD': u.add,
         'DELETE': u.delete,
         'GET_P': u.get_p,
         'GET_MP': u.get_mp

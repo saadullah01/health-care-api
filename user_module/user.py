@@ -49,7 +49,7 @@ class user_api():
             }
         return response
 
-    def put(inp):
+    def add(inp):
         connection = sqlite3.connect('database/health_care_DB.db')
         first_name, last_name, gender, contact_no, role_ID = None, None, None, None, None
         dob, email, address, billing, allergies = None, None, None, None, None
