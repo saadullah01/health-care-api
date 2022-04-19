@@ -49,27 +49,31 @@ For the above mentioned 7 devices a user can:
 * Get data
 
 ### Data Module
-**`Request` format to `PUT` data:**
+**`PUT` data:**
 ```py
-put_request = {
+request = {
+  'request': 'PUT',
   'user_ID': _, # integer
   'device_ID': _, # integer
   'reading': _, # double
   'time': _, # datetime e.g. '%Y-%M-%D %H:%M:%S'
 }
-```
-**`Request` format to `GET` data:**
-```py
-get_request = {
-  'user_ID': _, # integer
-  'device_ID': _, # integer
-}
-```
-**`Response` Format:**
-```
+
 response = {
   success: _, # Boolean
-  message: _ # Message includes success/error/data depending on the request
+  message: _ # Success or an error message
+}
+```
+**`GET` data:**
+```py
+request = {
+  'request': 'GET',
+  'user_ID': _, # integer
+}
+
+response = {
+  success: _, # Boolean
+  message: _ # list of json objects or an error message
 }
 ```
 
