@@ -67,9 +67,11 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS measurements (
 # Creating "conversations" Table
 cursor.execute('''CREATE TABLE IF NOT EXISTS conversations (
                 ID integer PRIMARY KEY AUTOINCREMENT,
-                creator_ID intger,
+                user1_ID intger,
+                user2_ID intger,
                 created_at datetime,
-                FOREIGN KEY (creator_ID) REFERENCES users (ID)
+                FOREIGN KEY (user1_ID) REFERENCES users (ID)
+                FOREIGN KEY (user2_ID) REFERENCES users (ID)
             );''')
 
 # Creating "messages" Table

@@ -18,8 +18,7 @@ def test_add_reading():
 def test_get_reading():
     response = d.get({
         'request': 'GET',
-        'user_ID': 1,
-        'device_ID': 2
+        'user_ID': 1
     })
     # Deleting test dummy entry
     connection = sqlite3.connect('database/health_care_DB.db')
@@ -27,4 +26,4 @@ def test_get_reading():
     cursor.execute('''DELETE FROM measurements WHERE user_ID==1 AND device_ID==2;''')
     connection.commit()
     connection.close()
-    assert response['message'][0] == "Reading = 98.0 Time = 2022-02-15 00:00:00"
+    assert response['success'] == True

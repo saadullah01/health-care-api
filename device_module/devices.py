@@ -7,7 +7,7 @@ import sqlite3
 class device_api():
     def get(inp):
         connection = sqlite3.connect('database/health_care_DB.db')
-        user_ID, device_type = None, None
+        user_ID = None
         response = {
             'success': False,
             'message': list()
@@ -18,23 +18,21 @@ class device_api():
         except:
             response['message'] = "Error! Invalid user_ID format"
             return response
-        # device_ID
-        try:
-            device_type = int(inp['device_ID'])
-        except:
-            response['message'] = "Error! Invalid device_ID format"
-            return response
         
         cursor = connection.cursor()
-        cursor.execute('''SELECT reading, time FROM measurements WHERE user_ID==? AND device_ID==?;''', (user_ID, device_type))
+        cursor.execute('''SELECT * FROM measurements WHERE user_ID==?;''', (user_ID,))
         readings = cursor.fetchall()
         connection.commit()
         connection.close()
 
         response['success'] = True
         for r in readings:
-            response['message'].append("Reading = " + str(r[0]) + " Time = " + str(r[1]))
-        
+            response['message'].append({
+                'user_ID': r[0],
+                'device_ID': r[1],
+                'reading': r[2],
+                'time': r[3]
+            })
         return response
 
     def put(inp):

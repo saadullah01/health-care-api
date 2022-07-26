@@ -11,8 +11,8 @@ for r in roles:
 
 # Populating "users" Table
 users_sql = "INSERT INTO users(first_name,last_name,gender,contact_no,role_ID,dob,email,address,billing,allergies,medical_ID,family,medical_history,medical_condition,emergency_contact) "
-cursor.execute(users_sql + '''VALUES('Osama','Prof','male','000000',1,'1999-08-09 00:00:00','osama@bu.edu','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
-cursor.execute(users_sql + '''VALUES('Zaid','Tahir','male','000000',2,'1999-08-09 00:00:00','zaid@bu.edu','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
+cursor.execute(users_sql + '''VALUES('Saad','Ullah','male','000000',1,'1999-08-09 00:00:00','saadullah1912@gmail.com','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
+cursor.execute(users_sql + '''VALUES('Saad','Ullah','male','000000',2,'1999-08-09 00:00:00','saadullah0402@gmail.com','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
 cursor.execute(users_sql + '''VALUES('Noor','Alina','female','000000',3,'1999-08-09 00:00:00','noor@gmail.com','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
 cursor.execute(users_sql + '''VALUES('Jonah','Sameul','male','000000',4,'1999-08-09 00:00:00','jss12@bu.edu','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
 cursor.execute(users_sql + '''VALUES('Anni','India','male','000000',4,'1999-08-09 00:00:00','anni@gmail.com','XXXXXX','same','none','XXXXXXX','none','none','none','none');''')
@@ -81,22 +81,19 @@ cursor.execute(measurements_sql + '''VALUES(8,6,2,'2022-02-15 00:00:00');''')
 cursor.execute(measurements_sql + '''VALUES(8,7,66,'2022-02-15 00:00:00');''')
 
 # Populating "conversations" Table
-conversations_sql = "INSERT INTO conversations(creator_ID,created_at) "
-cursor.execute(conversations_sql + '''VALUES(1,'2022-02-15 00:00:00');''')
-cursor.execute(conversations_sql + '''VALUES(3,'2022-02-15 00:00:00');''')
-cursor.execute(conversations_sql + '''VALUES(4,'2022-02-15 00:00:00');''')
-cursor.execute(conversations_sql + '''VALUES(5,'2022-02-15 00:00:00');''')
+conversations_sql = "INSERT INTO conversations(user1_ID,user2_ID,created_at) "
+cursor.execute(conversations_sql + '''VALUES(1,2,'2022-02-15 00:00:00');''')
+cursor.execute(conversations_sql + '''VALUES(1,7,'2022-02-15 00:00:00');''')
+cursor.execute(conversations_sql + '''VALUES(2,7,'2022-02-15 00:00:00');''')
 
 # Populating "messages" Table
 messages_sql = "INSERT INTO messages(sender_ID,receiver_ID,conversation_ID,message_type,message,time) "
 cursor.execute(messages_sql + '''VALUES(1,2,1,1,'Hello! I am 1.','2022-02-15 00:00:00');''')
 cursor.execute(messages_sql + '''VALUES(2,1,1,1,'Hello 1! I am 2.','2022-02-15 00:00:00');''')
-cursor.execute(messages_sql + '''VALUES(1,3,2,1,'Hello! Can you send me .txt file.','2022-02-15 00:00:00');''')
-cursor.execute(messages_sql + '''VALUES(3,1,2,2,'/home/files/1.txt','2022-02-15 00:00:00');''')
-cursor.execute(messages_sql + '''VALUES(1,4,3,1,'Hello! Can you send me .wav file.','2022-02-15 00:00:00');''')
-cursor.execute(messages_sql + '''VALUES(4,1,3,3,'/home/files/1.wav','2022-02-15 00:00:00');''')
-cursor.execute(messages_sql + '''VALUES(1,5,4,1,'Hello! Can you send me .mp4 file.','2022-02-15 00:00:00');''')
-cursor.execute(messages_sql + '''VALUES(5,1,4,4,'/home/files/1.mp4','2022-02-15 00:00:00');''')
+cursor.execute(messages_sql + '''VALUES(1,7,2,1,'Hello! I am 1.','2022-02-15 00:00:00');''')
+cursor.execute(messages_sql + '''VALUES(7,1,2,1,'Hello 1! I am 7.','2022-02-15 00:00:00');''')
+cursor.execute(messages_sql + '''VALUES(2,7,3,1,'Hello! I am 2.','2022-02-15 00:00:00');''')
+cursor.execute(messages_sql + '''VALUES(7,2,3,1,'Hello 7! I am 2.','2022-02-15 00:00:00');''')
 
 connection.commit()
 connection.close()

@@ -7,27 +7,39 @@ import sqlite3
 class chat_api():
     def get(inp):
         connection = sqlite3.connect('database/health_care_DB.db')
-        conversation_ID = None
+        user_ID = None
         response = {
             'success': False,
             'message': list()
         }
-        # conversation_ID
+
+        # user_ID
         try:
-            conversation_ID = int(inp['conversation_ID'])
+            user_ID = int(inp['user_ID'])
         except:
-            response['message'] = "Error! Invalid conversation_ID format"
+            response['message'] = "Error! Invalid user_ID format"
             return response
         
         cursor = connection.cursor()
-        cursor.execute('''SELECT * FROM messages WHERE conversation_ID==?;''', (conversation_ID,))
+        cursor.execute('''SELECT * FROM conversations WHERE user1_ID==? OR user2_ID==?;''', (user_ID, user_ID))
         readings = cursor.fetchall()
-        connection.commit()
-        connection.close()
 
         response['success'] = True
         for r in readings:
-            response['message'].append("Sender = " + str(r[0]) + " Receiver = " + str(r[1]) + " Message = " + str(r[4]) + " Time = " + str(r[5]))
+            other_user_ID = int(r[1]) if user_ID != int(r[1]) else int(r[2])
+            cursor.execute('''SELECT first_name, last_name, role_ID FROM users WHERE ID==?;''', (user_ID,))
+            result = cursor.fetchone()
+            
+            response['message'].append({
+                'conv_ID': int(r[0]),
+                'user_ID': other_user_ID,
+                'time': r[3],
+                'first_name': result[0],
+                'last_name': result[1],
+                'role_ID': result[2]
+            })
+        connection.commit()
+        connection.close()
         
         return response
 
